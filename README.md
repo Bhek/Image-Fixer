@@ -1,4 +1,4 @@
-# opencv-android
+# Image Fixer
 Example for using opencv with android.
 
 
