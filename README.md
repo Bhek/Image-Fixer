@@ -1,43 +1,16 @@
 # Image Fixer
 Example for using opencv with android.
 
+1. Download latest OpenCV sdk for Android from OpenCV.org and decompress the zip file.
 
-1. Create a module named "opencv" for your android project.
+2. Import OpenCV to Android Studio, From File -> New -> Import Module, choose sdk/java folder in the unzipped opencv archive.
 
-2. Download opencv-android from [http://opencv.org/downloads.html](http://opencv.org/downloads.html)
- 
-3. Copy files from {opencv-android-dir}/sdk/java to opencv module.
+3. Update build.gradle under imported OpenCV module to update 4 fields to match your project build.gradle a) compileSdkVersion b) buildToolsVersion c) minSdkVersion and d) targetSdkVersion.
 
-4. Copy files from {opencv-android-dir}/sdk/native/libs to app/src/main/jniLibs
- 
-5. Add project dependency to your main module.
+4. Add module dependency by Application -> Module Settings, and select the Dependencies tab. Click + icon at bottom, choose Module Dependency and select the imported OpenCV module.
 
-            dependencies {
-                compile fileTree(dir: 'libs', include: ['*.jar'])
-                compile 'com.android.support:appcompat-v7:21.0.3'
-        
-                compile project(':opencv')
-            }
+5. For Android Studio v1.2.2, to access to Module Settings : in the project view, right-click the dependent module -> Open Module Settings
 
-6. Load opencv library before using opencv java api.
-        
-            public class MainActivity extends ActionBarActivity {
-            
-            
-                private static final String LOG_TAG = MainActivity.class.getSimpleName();
-            
-                static {
-                    System.loadLibrary("opencv_java");
-                }
-            
-                @Override
-                protected void onCreate(Bundle savedInstanceState) {
-                    super.onCreate(savedInstanceState);
-                    setContentView(R.layout.activity_main);
-            
-                    Mat mat = new Mat();
-                    Log.d(LOG_TAG, mat.toString());
-                }
-            
-            
-            }
+6. Copy libs folder under sdk/native to Android Studio under app/src/main.
+
+7. In Android Studio, rename the copied libs directory to jniLibs and we are done.
