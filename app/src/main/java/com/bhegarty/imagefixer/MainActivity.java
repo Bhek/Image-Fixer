@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     static {
-        System.loadLibrary("opencv_java");
+        System.loadLibrary("opencv_java3");
     }
 
     @Override
