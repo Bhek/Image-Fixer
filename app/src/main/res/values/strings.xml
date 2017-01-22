@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Image Fixer</string>
+    <string name="button_load_existing_image">Load Existing Image</string>
 </resources>
