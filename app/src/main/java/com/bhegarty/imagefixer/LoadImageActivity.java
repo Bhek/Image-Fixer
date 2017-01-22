@@ -75,10 +75,12 @@ public class LoadImageActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageBitmap(bitmap);
 
-        processImage(bitmap);
+        Bitmap newBitmap = processImage(bitmap);
+
+        imageView.setImageBitmap(newBitmap);
     }
 
-    private void processImage(Bitmap bitmap) {
+    private Bitmap processImage(Bitmap bitmap) {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         Mat image = new Mat(width, height, CvType.CV_8UC1);
@@ -91,9 +93,8 @@ public class LoadImageActivity extends AppCompatActivity {
             }
         }
 
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
         Utils.matToBitmap(image, bitmap);
-        imageView.setImageBitmap(bitmap);
+        return bitmap;
     }
 
     private double[] getAveragePixels(double[] startPixels, double[] endPixels) {
