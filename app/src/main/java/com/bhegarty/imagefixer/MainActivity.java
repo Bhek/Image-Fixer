@@ -10,8 +10,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/ImageFixer/";
-
     static {
         System.loadLibrary("opencv_java3");
     }
