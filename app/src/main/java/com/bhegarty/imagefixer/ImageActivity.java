@@ -1,9 +1,13 @@
 package com.bhegarty.imagefixer;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.ImageView;
+
+import org.opencv.android.Utils;
 
 import java.io.File;
 
@@ -33,5 +37,23 @@ public static final String DATA_PATH = Environment.getExternalStoragePublicDirec
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        processImage();
+    }
+
+    private void processImage() {
+        Bitmap bitmap = null;
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            bitmap = (Bitmap) getIntent().getParcelableExtra("image");
+        }
+
+        ImageView mImageView = (ImageView) findViewById(R.id.cameraResult);
+        mImageView.setImageBitmap(bitmap);
     }
 }
